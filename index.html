@@ -76,12 +76,52 @@ noBtn.addEventListener("click", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
 yesBtn.addEventListener("click", () => {
+
   document.body.innerHTML = `
-    <div style="margin-top:25vh;text-align:center;font-family:Arial;padding:20px;">
-      <h1 style="color:#ff3f8b;font-size:36px;">Wohooooo! ❤️🇮🇹</h1>
-      <p style="font-size:22px;">Visste alltid du var med, vi snakker om det i kveld!</p>
+    <div style="padding:20px;text-align:center;font-family:Arial;">
+      <h1 style="color:#ff3f8b;">🎉 Wohooooo! 🎉</h1>
+
+      <img
+        src="IMG_9129.jpeg"
+        style="
+          max-width:90%;
+          border-radius:20px;
+          box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        "
+      >
+
+      <p style="font-size:24px;margin-top:20px;">
+        ❤️ Visste alltid du var med,
+        vi snakker om det i kveld! 🇮🇹
+      </p>
     </div>
   `;
+
+  for(let i = 0; i < 150; i++) {
+
+    const confetti = document.createElement("div");
+
+    confetti.innerHTML =
+      ["🎉","✨","❤️","🇮🇹"][Math.floor(Math.random()*4)];
+
+    confetti.style.position = "fixed";
+    confetti.style.left = Math.random()*100 + "vw";
+    confetti.style.top = "-30px";
+    confetti.style.fontSize =
+      (20 + Math.random()*20) + "px";
+
+    confetti.style.transition =
+      "all 4s linear";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.style.top = "110vh";
+      confetti.style.transform =
+        `rotate(${Math.random()*720}deg)`;
+    }, 10);
+  }
+
 });
 
 setInterval(() => {
