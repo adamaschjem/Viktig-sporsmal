@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktig spørsmål ❤️</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #fff1f7);
+  text-align: center;
+}
+.box {
+  margin-top: 22vh;
+}
+h1 {
+  color: #ff3f8b;
+  font-size: 34px;
+  padding: 20px;
+}
+button {
+  font-size: 20px;
+  padding: 16px 28px;
+  margin: 12px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+#yes {
+  background: #ff4fa3;
+  color: white;
+}
+#no {
+  background: white;
+  color: #ff4fa3;
+  position: absolute;
+}
+.heart {
+  position: fixed;
+  font-size: 24px;
+  animation: float 3s linear forwards;
+}
+@keyframes float {
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h1>Vil du bli med pappa til Roma? ❤️</h1>
+  <button id="yes">Ja selvfølgelig!</button>
+  <button id="no">Må tenke på det!</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+function moveNoButton() {
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("click", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="margin-top:25vh;text-align:center;font-family:Arial;padding:20px;">
+      <h1 style="color:#ff3f8b;font-size:36px;">Wohooooo! ❤️🇮🇹</h1>
+      <p style="font-size:22px;">Visste alltid du var med, vi snakker om det i kveld!</p>
+    </div>
+  `;
+});
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.bottom = "-30px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 3000);
+}, 400);
+</script>
+
+</body>
+</html>
